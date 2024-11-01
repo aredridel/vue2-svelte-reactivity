@@ -1,7 +1,5 @@
 import {customRef, effectScope, getCurrentScope, onScopeDispose} from "vue";
 
-export const counter = $state({value: 0});
-
 /*
  * Assumes we're in a vue effect scope; starts a new root svelte effect scope,
  * and disposes of it when the vue scope ends
@@ -21,7 +19,8 @@ export function toRef(obj) {
 		}
 		dispose = $effect.root(() => {
 			$effect(() => {
-				obj.value;
+				// subscribe to it all
+				for (let k in obj) obj[k];
 				trigger();
 			});
 		});
@@ -29,3 +28,4 @@ export function toRef(obj) {
 	});
 	return ref;
 }
+

@@ -3,12 +3,10 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "vite"
   },
-  "author": "",
   "type": "module",
   "license": "ISC",
-  "description": "",
   "dependencies": {
     "svelte": "^5.1.9",
     "vue": "^2.7.16"

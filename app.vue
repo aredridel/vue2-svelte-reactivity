@@ -1,28 +1,19 @@
 <template>
   <body>
-    In Vue
-    {{ counterRef }}
-    <button @click="counterRef.value++">++</button>
+	<CounterVue />
 
-    <div ref="svelteRef" v-once v-html=""></div>
+    <div ref="svelteRoot" v-once></div>
   </body>
 </template>
 
 <script setup>
-import { customRef, ref, onMounted } from "vue";
+import CounterVue from "./counter.vue";
+import { ref, onMounted } from "vue";
 import { mount, flushSync } from "svelte";
-import { counter, toRef } from "./test.svelte.js";
-import SvelteTest from "./test.svelte";
+import CounterSvelte from "./counter.svelte";
 
-// For debugging and interactive experimentation
-window.counter = counter;
-
-const counterRef = toRef(counter);
-counter.value++;
-
-const svelteRef = ref();
+const svelteRoot = ref();
 onMounted(() => {
-	const app = mount(SvelteTest, { target: svelteRef.value, props: {} });
-	flushSync();
+	const app = mount(CounterSvelte, { target: svelteRoot.value, props: {} });
 });
 </script>
